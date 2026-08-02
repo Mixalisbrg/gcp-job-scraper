@@ -7,7 +7,7 @@ from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.common.by import By
 from webdriver_manager.chrome import ChromeDriverManager
 from google.cloud import bigquery
-from google.api_core.exceptions import Conflict          # ← η δική σου βελτίωση
+from google.api_core.exceptions import Conflict          
 from flask import Flask
 import settings
 
@@ -73,7 +73,7 @@ def upload_df_to_bigquery(dataframe, project_id, dataset_id, table_name):
     try:
         dataset = client.create_dataset(dataset, timeout=30)
         print("Created dataset {}.{}".format(client.project, dataset.dataset_id))
-    except Conflict:                                      # ← η δική σου βελτίωση
+    except Conflict:                                      
         print("Dataset already exists")
 
     table_id = f"{dataset_id}.{table_name}"
